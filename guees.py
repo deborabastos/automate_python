@@ -1,3 +1,7 @@
+#! /usr/bin/env python3
+# Shebang Line tells your computer that you want to run the script using pyhton3
+
+
 # This is a guess the number game
 import random
 print('Hello. What is your name?')
