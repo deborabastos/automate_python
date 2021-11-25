@@ -108,5 +108,85 @@ digitRegex = re.compile(r'(\d){3,5}?') #NonGreedy
 mo = digitRegex.search('1234567890')
 print(mo)
 
+# findall()
+# returns a list with each match been a element of the list
+phoneRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+print(phoneRegex.findall('Call me at 415-555-1011 tomorrow, or at 415-555-9999'))
+# ['415-555-1011', '415-555-9999']
 
+# If you have more then one group, the return will be a list of list
 
+phoneRegex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+print(phoneRegex.findall('Call me at 415-555-1011 tomorrow, or at 415-555-9999'))
+# [('415', '555-1011'), ('415', '555-9999')]
+
+# Characters classes
+# digit.Regex = re.compile(r'\d') == re.compile(r'(0|1|2|3|4|5|6|7|8|9)')
+
+# Shorthand character classes			Represents
+# \d									Any numeric digit from 0 to 9
+# \D									!d
+# \w									Any letter, numeric digit, or the underscore character (word)
+# \W									!w
+# \s									Any space, tab, or newline character. (space)
+# \S									!s
+
+# Making your own character classes
+vowelRegex = re.compile(r'[aeiouAEIOU]') # r'(a|e|i|o|u)'
+print(vowelRegex.findall('Robocop eats baby food.'))
+doubleVowelRegex = re.compile(r'[aeiouAEIOU]{2}') # two vowels in a row
+print(doubleVowelRegex.findall('Robocop eats baby food.'))
+notVowelRegex = re.compile(r'[^aeiouAEIOU]')
+print(notVowelRegex.findall('Robocop eats baby food.'))
+
+aToFRegex = re.compile(r'[a-fA-F]')
+
+# Matching the ^start and end$ 
+beginsWithHelloRegex = re.compile(r'^Hello')
+print(beginsWithHelloRegex.search('Hello there'))
+print(beginsWithHelloRegex.search('he said "Hello"')) #None
+
+endsWithWorldRegex = re.compile(r'world!$')
+print(endsWithWorldRegex.search('Hello world!'))
+print(endsWithWorldRegex.search('Hello world! He said')) # None
+
+# using ^both$ means pattern must match the entire string
+allDigitsRegex = re.compile(r'^\d+$') #only numbers
+print(allDigitsRegex.search('432423423423423423'))
+print(allDigitsRegex.search('432423423x423423423')) #None
+print(allDigitsRegex.search('432423423 423423423')) #None
+
+# dot .
+# any character except for newline
+atRegex = re.compile(r'.at')
+print(atRegex.findall('The cat in the hat sat in the flat mat.'))
+atRegex = re.compile(r'.{1,2}at')
+print(atRegex.findall('The cat in the hat sat in the flat mat.'))
+
+# .*
+# any character
+
+nameRegex = re.compile(r'First Name: (.*) Last Name: (.*)')
+print(nameRegex.findall('First Name: Débora Last Name: Bastos'))
+
+# (.*) is greedy
+# (.*?) is nongreedy
+
+serve = '<To serve humans> for dinner.>'
+nongreedy = re.compile(r'<(.*?)>')
+print(nongreedy.findall(serve))
+greedy = re.compile(r'<(.*)>')
+print(greedy.findall(serve))
+
+# re.DOTALL \n
+prime = 'Serve the public.\nProtect the innocent.\nUpload the law.'
+dotStar = re.compile(r'.*')
+print(dotStar.search(prime)) # stops at \n
+
+# To include \n
+dotStar = re.compile(r'.*', re.DOTALL)
+print(dotStar.search(prime)) # stops at \n
+
+# re.IGNORECASE or re.I
+vowelRegex = re.compile(r'[aeiou]', re.I) # or re.IGNORECASE
+print(vowelRegex.findall('Robocop Eats baby food.'))
