@@ -190,3 +190,27 @@ print(dotStar.search(prime)) # stops at \n
 # re.IGNORECASE or re.I
 vowelRegex = re.compile(r'[aeiou]', re.I) # or re.IGNORECASE
 print(vowelRegex.findall('Robocop Eats baby food.'))
+
+# sub() method
+# find and replace
+
+namesRegex = re.compile(r'Agent \w+')
+print(namesRegex.findall('Agent Alice gave the secret documents to Agent Bob.'))
+print(namesRegex.sub('REDACTED', 'Agent Alice gave the secret documents to Agent Bob.'))
+
+namesRegex = re.compile(r'Agent (\w)\w*') # only return the group (first letter of name)
+print(namesRegex.sub(r'Agent \1****', 'Agent Alice gave the secret documents to Agent Bob.')) # 1 is for group 1
+
+# Verbose mode with re.VERBOSE
+# ignores \n inside compile - can add commets 
+# re.compile(r'''
+# (\d\d\d-)		# area code (without parens, with dash)
+# |				# or
+# (\(\d\d\d) )	# area code (with parens and no dash)
+# \d\d\d			# first 3 digits
+# -				# second dash
+# \d\d\d\d		# last 4 digits
+# \sx\d{2,4}		# extension, like x1234
+# ''', re.VERBOSE)
+
+
