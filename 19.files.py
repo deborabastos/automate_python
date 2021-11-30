@@ -73,3 +73,101 @@ print(totalSize)
 # makedirs() creates a new folder () or a sequence of new folders
 # os.makedirs('/Users/deborabastos/Documents/delicious/walnut/waffles')
 
+################################################################
+# Reading and writing PLAINTEXT (for variables, use shelve module)
+# open('path')
+
+helloFile = open('01.hello.py')
+
+# read() and close() method
+content = helloFile.read()
+print(content)
+helloFile.close()
+
+# readlines() saves every line as a string inside of a list. read() only returns a single string
+helloFile = open('01.hello.py')
+content = helloFile.readlines()
+print(content)
+helloFile.close()
+
+# Write mode
+# w open a file in write mode. It will overwrite any existing content with the new content. It returns how many chars was written to the file
+# a open a file in append mode. It will append the new content to the existing content
+# In both cases, is the file does not exists, python will create a new file
+
+helloFile = open('write.txt', 'w')
+helloFile.write('Hello!!!!!!!!')
+helloFile.close()
+
+helloFile = open('write.txt', 'w')
+helloFile.write('World!!!') # overwrites
+helloFile.close()
+
+helloFile = open('write.txt', 'w')
+helloFile.write('Hello!!!!!!!!')
+helloFile.close()
+
+helloFile = open('write.txt', 'a')
+helloFile.write(' World!!!') # appends
+helloFile.close()
+
+## shelve module is needed to store variables that have lists or dictionaries
+# shelve module saves in binary shelve files
+
+import shelve
+shelfFile = shelve.open('mydata')
+shelfFile['cats'] = ['Zophie', 'Pooka', 'Simon', 'Fat-tail', 'Cleo']
+shelfFile.close()
+
+shelfFile = shelve.open('mydata')
+print(shelfFile['cats'])
+shelfFile.close()
+
+shelfFile = shelve.open('mydata')
+print(list(shelfFile.keys()))
+print(list(shelfFile.values()))
+
+################################################################
+# Coping and moving files
+import shutil
+# shutil.copy(<file>, <destiny path>)
+# you can also rename file
+shutil.copy('write.txt', '/Users/deborabastos/Documents/3.Data Science/Curso Python/automate_online-materials')
+
+# To copy folder
+shutil.copytree('automate_online-materials', 'automate_online-materials_backup')
+
+# Move a file to another folder
+# You can use the move function to rename a file
+shutil.move('mydata', 'automate_online-materials')
+shutil.move('automate_online-materials/mydata', 'automate_online-materials/mydata2')
+
+
+
+############################################################################
+# DELETING
+# Delete and remove files
+# ATENTION IT WILL BE DELETED PERMANENTLY
+import os
+os.unlink('automate_online-materials/mydata2') # deletes a single file
+os.unlink('automate_online-materials/write.txt') # deletes a single file
+# os.unlink('write.txt')
+
+# Delete a EMPTY folder
+# ATENTION IT WILL BE DELETED PERMANENTLY
+# os.rmdir('automate_online-materials_backup')
+
+# Delete a folder and it contents
+# ATENTION IT WILL BE DELETED PERMANENTLY
+shutil.rmtree('automate_online-materials_backup')
+
+
+# Dry run
+# for filename in os.listdir():
+	# if filename.endswith('.txt'):
+		# os.unlink(filename) uncomment after you check filenames
+		# print(filename)
+
+# If you want to send to trash instead of permanent deleting, use send2trash module
+import send2trash
+send2trash.send2trash('write.txt')
