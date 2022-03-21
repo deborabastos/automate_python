@@ -16,7 +16,7 @@ print(os.getcwd())
 os.chdir('/Users/deborabastos/Documents/')
 print(os.getcwd())
 
-os.chdir('/Users/deborabastos/Documents/3.Data Science/Curso Python')
+os.chdir('/Users/deborabastos/Documents/3.DataScience/automate_python')
 
 
 # Absolute file path always beggings with the root folder
@@ -56,7 +56,7 @@ print(os.path.isfile('/Users/deborabastos/Documents/')) # False
 print(os.path.isdir('/Users/deborabastos/Documents/')) # True
 
 # getsize() # returns the size in bytes as a integer
-print(os.path.getsize('/Users/deborabastos/Documents/IMG_9606.jpg'))
+# print(os.path.getsize('/Users/deborabastos/Documents/IMG_9606.jpg'))
 
 # listdir()
 print(os.listdir('/Users/deborabastos/Documents/'))
@@ -132,15 +132,15 @@ print(list(shelfFile.values()))
 import shutil
 # shutil.copy(<file>, <destiny path>)
 # you can also rename file
-shutil.copy('write.txt', '/Users/deborabastos/Documents/3.Data Science/Curso Python/automate_online-materials')
+shutil.copy('write.txt', '/Users/deborabastos/Documents/3.DataScience/automate_python/automate_online-materials')
 
 # To copy folder
 shutil.copytree('automate_online-materials', 'automate_online-materials_backup')
 
 # Move a file to another folder
 # You can use the move function to rename a file
-shutil.move('mydata', 'automate_online-materials')
-shutil.move('automate_online-materials/mydata', 'automate_online-materials/mydata2')
+shutil.move('mydata.db', 'automate_online-materials')
+shutil.move('automate_online-materials/mydata.db', 'automate_online-materials/mydata2.db')
 
 
 
@@ -149,7 +149,7 @@ shutil.move('automate_online-materials/mydata', 'automate_online-materials/mydat
 # Delete and remove files
 # ATENTION IT WILL BE DELETED PERMANENTLY
 import os
-os.unlink('automate_online-materials/mydata2') # deletes a single file
+os.unlink('automate_online-materials/mydata2.db') # deletes a single file
 os.unlink('automate_online-materials/write.txt') # deletes a single file
 # os.unlink('write.txt')
 
@@ -171,3 +171,18 @@ shutil.rmtree('automate_online-materials_backup')
 # If you want to send to trash instead of permanent deleting, use send2trash module
 import send2trash
 send2trash.send2trash('write.txt')
+
+############################################################################
+# Walking a dictionary tree
+for folderName, subfolders, filenames in os.walk('/Users/deborabastos/Documents/3.Data Science/Curso Python'):
+	print('The folder is ' + folderName)
+	print('The subfolders in ' + folderName + ' are ' + str(subfolders))
+	print('The filenames in ' + folderName + ' are ' + str(filenames))
+	print('\n')
+
+	for subfolder in subfolders:
+		if 'fish' in subfolder:
+			os.rmdir(subfolder)
+	for file in filenames:
+		if file.endswith('.py'):
+			shutil.copy(os.join(folderName, file), os.join(folderName, file + '.backup'))
