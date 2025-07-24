@@ -28,15 +28,15 @@ print(len([1,2,3])) # 3
 #Concatenate lists
 lista = [1,2,3] + [4,5,6]
 print(lista)
-print(lista + spam)
+print(lista + spam) # [1, 2, 3, 4, 5, 6, 'cat', 'bat', 'rat', 'elephant']
 
 #Multiply lists
 multi = [1,2,3] * 3
-print(multi)
+print(multi) # [1, 2, 3, 1, 2, 3, 1, 2, 3]
 
 #Transform string in list 
 hi = list('Hello')
-print(hi)
+print(hi) # ['H', 'e', 'l', 'l', 'o']
 
 #Verify if a string or value is contained within the list
 test = 'howdy' in ['hello', 'hi', 'howdy', 'heyas']
