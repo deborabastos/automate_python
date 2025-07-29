@@ -3,8 +3,8 @@
 # Indexes for dictionary are called keys 
 
 myCat = {'size': 'fat', 'color': 'gray', 'disposition': 'loud', 'age': 8}
-print(myCat['size'])
-print('My cat has ' + myCat['color'] + ' fur')
+print(myCat['size']) #fat
+print('My cat has ' + myCat['color'] + ' fur') #My cat has gray fur
 
 # Unlike list, dictionaries are unordered (itens order do not matter)
 spam = {12345: 'Luggage combination', 42: 'The Answer'}
@@ -17,18 +17,30 @@ print(spam == eggs) # True
 
 # DICTIONARIES METHODS
 # keys(), values(), items()
-print(list(myCat.keys()))
-print(list(myCat.values()))
-print(list(myCat.items()))
+print(list(myCat.keys())) #['size', 'color', 'disposition', 'age']
+print(list(myCat.values())) #['fat', 'gray', 'loud', 8]
+print(list(myCat.items())) #[('size', 'fat'), ('color', 'gray'), ('disposition', 'loud'), ('age', 8)]
 
 for k in myCat.keys():
 	print(k)
+	#size
+	#color
+	#disposition
+	#age
 
 for v in myCat.values():
 	print(v)
+	#fat
+	#gray
+	#loud
+	#8
 
 for k, v in myCat.items():
 	print(k, v)
+	#size fat
+	#color gray
+	#disposition loud
+	#age 8
 
 # To check if a value belongs to a dictionary, you need to call method items
 'gray' in myCat.items() # True
@@ -39,6 +51,6 @@ print(myCat.get('ages', 'x')) # return 'x'
 
 # setdefault(). Defines a key and value only if it is not set yet.
 myCat.setdefault('name', 'Zophie')
-print(myCat)
+print(myCat) #{'size': 'fat', 'color': 'gray', 'disposition': 'loud', 'age': 8, 'name': 'Zophie'}
 myCat.setdefault('name', 'Puka')
-print(myCat)
+print(myCat) #{'size': 'fat', 'color': 'gray', 'disposition': 'loud', 'age': 8, 'name': 'Zophie'}
