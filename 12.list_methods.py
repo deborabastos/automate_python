@@ -3,13 +3,13 @@
 
 # INDEX method returns tha index number of a value
 spam = ['hello', 'hi', 'howdy', 'heyas']
-print(spam.index('hello'))
-print(spam.index('heyas'))
+print(spam.index('hello')) # 0
+print(spam.index('heyas')) # 3
 # if the value doesnt exist in the list, a error will occur
 # print(spam.index('ups'))
 # if the value is duplicated in the list, the first one will return
 spam = ['heyas', 'hello', 'hi', 'howdy', 'heyas']
-print(spam.index('heyas'))
+print(spam.index('heyas')) #0
 
 # APPEND method adds a value at the end of the list
 spam = ['heyas', 'hello', 'hi', 'howdy', 'heyas']

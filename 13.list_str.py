@@ -2,14 +2,14 @@
 print(list('Hello'))
 
 name = 'Zophie'
-print(name[0])
-print(name[1:3])
-print(name[-2])
+print(name[0]) #Z
+print(name[1:3]) #op
+print(name[-2]) #i
 
 bol = 'Zo' in name
-print(bol)
+print(bol) #True
 bol = 'xxx' in name
-print(bol)
+print(bol) #False
 
 for letter in name:	
 	print(letter)
@@ -32,15 +32,15 @@ def eggs(cheese):
 
 spam = [1, 2, 3]
 eggs(spam)
-print(spam) # Note that Hello will be added to the list. This is only possible because is a reference
+print(spam) #[1, 2, 3, 'Hello'] - Note that Hello will be added to the list. This is only possible because is a reference
 
 # If you want to make a real copy of a list, use function deepcopy from copy library 
 import copy
 spam = [1, 2, 3]
 cheese = copy.deepcopy(spam)
 cheese[1] = 0
-print(spam)
-print(cheese)
+print(spam) #[1, 2, 3]
+print(cheese) #[1, 0, 3]
 
 
 # Line continuation
@@ -51,4 +51,4 @@ spam = ['apple',
 
 # You can do the same by using tha \ continuation
 print('Four score and seven' + \
-	' years ago')
+	' years ago') #Four score and seven years ago
