@@ -27,6 +27,22 @@ newName = name[0:7] + 'the' + name[8:12]
 print(name) 
 print(newName)
 
+# String = Immuttable
+spam = 42
+cheese = spam
+spam = 100
+print(spam) #100
+print(cheese) #42
+
+
+# List = Muttable
+spam = [0,1,2,3,4,5]
+cheese = spam # python assign a referance to the list, not the list itself
+cheese[1] = 'Hello!'
+print(cheese) #[0, 'Hello!', 2, 3, 4, 5]
+print(spam) #[0, 'Hello!', 2, 3, 4, 5]
+
+
 def eggs(cheese):
 	cheese.append('Hello')
 
