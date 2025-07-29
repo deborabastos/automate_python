@@ -12,3 +12,7 @@ for character in message.upper():
 #pprint = pretty print: better outlook
 pprint.pprint(count) 
 
+#to save as a string use pformat
+rjtext = pprint.pformat(count) 
+print(rjtext)
+
