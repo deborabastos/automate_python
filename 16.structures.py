@@ -11,10 +11,9 @@ allCats.append({'name':'???', 'age':-1, 'color':'orange'})
 
 pprint.pprint(allCats)
 
-# type() return the data type 
-type(42) # <class 'int'>
-type('hello') # <class 'str'>
-type(3.14) # <class 'float'>
-type(cat) # <class 'dict'>
-type(cat['name']) # <class 'str'>
-type(cat['age']) # <class 'int'>
+print(type(42)) # <class 'int'>
+print(type('hello')) # <class 'str'>
+print(type(3.14)) # <class 'float'>
+print(type(cat)) # <class 'dict'>
+print(type(cat['name'])) # <class 'str'>
+print(type(cat['age'])) # <class 'int'>
